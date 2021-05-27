@@ -18,7 +18,7 @@
 
 
 
-<img src="https://static2.aniimg.com/upload/20170515/414/c/d/7/cd7EEF.jpg" width="300" align="right">
+<img src="https://telegra.ph/file/dbbd2d9d7e08fd23ae69f.jpg" width="300" align="right">
 
 
 ## Requirements
