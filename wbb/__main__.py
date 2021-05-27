@@ -92,42 +92,31 @@ async def help_command(_, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="Help ❓",
-                        url=f"t.me/{BOT_USERNAME}?start=help",
-                    ),
-                    InlineKeyboardButton(
-                        text="Repo 🛠",
-                        url="https://github.com/thehamkercat/WilliamButcherBot",
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="System Stats 💻", callback_data="stats_callback"
-                    ),
-                    InlineKeyboardButton(
-                        text="Support 👨", url="t.me/WBBSupport"
+                        text="Get Help ❓",
+                        url=f"t.me/MisEliza_RoBot?start=help",
                     ),
                 ],
             ]
         )
-        await message.reply("Pm Me For More Details.", reply_markup=keyboard)
+        await message.reply("Redirect To PM For Know About Me 😁. ", reply_markup=keyboard)
         return
+@app.on_message(filters.private & filters.command(["start"]))
+async def start(_, message):
     keyboard = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    text="Commands ❓", callback_data="bot_commands"
+                    text="⭕ Help ⭕", callback_data="bot_commands"
                 ),
                 InlineKeyboardButton(
-                    text="Repo 🛠",
-                    url="https://github.com/thehamkercat/WilliamButcherBot",
+                    text="System Stats 🖥", callback_data="stats_callback"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    text="System Stats 🖥", callback_data="stats_callback"
+                    text="Update Channel 👨‍💻", url="t.me/ekbotz_update"
                 ),
-                InlineKeyboardButton(text="Support 👨", url="t.me/WBBSupport"),
+                InlineKeyboardButton(text="Support Channel 🤖", url="t.me/ekbotz_support"),
             ],
             [
                 InlineKeyboardButton(
@@ -137,6 +126,7 @@ async def help_command(_, message):
             ],
         ]
     )
+
     await message.reply(
         f"Hey there! My name is {BOT_NAME}. I can manage your group with lots of useful features, feel free to add me to your group.",
         reply_markup=keyboard,
