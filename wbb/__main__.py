@@ -128,9 +128,12 @@ async def start(_, message):
     )
 
     await message.reply(
-        f"Hey there! My name is {BOT_NAME}. I can manage your group with lots of useful features, \nFeel free to add me to your group.",
+        f"**Hey there! My name is {BOT_NAME}. I can manage your group with lots of useful features,** \nFeel free to add me to your group.",
         reply_markup=keyboard,
     )
+
+@app.on_message(filters.private & filters.command(["help"]))
+async def help(_, message):
 
 
 async def help_parser(name, keyboard=None):
