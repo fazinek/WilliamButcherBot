@@ -116,7 +116,7 @@ async def start(_, message):
                 InlineKeyboardButton(
                     text="Update Channel 👨‍💻", url="t.me/ekbotz_update"
                 ),
-                InlineKeyboardButton(text="Support Channel 🤖", url="t.me/ekbotz_support"),
+                InlineKeyboardButton(text="Support Group 🤖", url="t.me/ekbotz_support"),
             ],
             [
                 InlineKeyboardButton(
@@ -128,7 +128,7 @@ async def start(_, message):
     )
 
     await message.reply(
-        f"Hey there! My name is {BOT_NAME}. I can manage your group with lots of useful features, feel free to add me to your group.",
+        f"Hey there! My name is {BOT_NAME}. I can manage your group with lots of useful features, \nFeel free to add me to your group.",
         reply_markup=keyboard,
     )
 
@@ -137,14 +137,15 @@ async def help_parser(name, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name}! My name is {bot_name}!
-I'm a group management bot with some usefule features.
-You can choose an option below, by clicking a button.
-Also you can ask anything in Support Group.
+        """<b>Hello {first_name}! My name is {bot_name}!
+I'm a group management bot with some useful features.
+You can choose an option below, by clicking below button.
+Also you can ask your doubts in Support Group.</b>
 
 General command are:
  - /start: Start the bot
- - /help: Give this message""".format(
+ - /help: Get Help
+ - /source: Source Code Of Bot""".format(
             first_name=name,
             bot_name=BOT_NAME,
         ),
@@ -176,14 +177,15 @@ async def help_button(client, query):
     back_match = re.match(r"help_back", query.data)
     create_match = re.match(r"help_create", query.data)
     top_text = f"""
-Hello {query.from_user.first_name}! My name is {BOT_NAME}!
-I'm a group management bot with some usefule features.
-You can choose an option below, by clicking a button.
-Also you can ask anything in Support Group.
+<b>Hello {query.from_user.first_name}! My name is {BOT_NAME}!
+I'm a group management bot with some useful features.
+You can choose an option below, by clicking below button.
+Also you can ask your doubts in Support Group.</b>
 
 General command are:
- - /start: Start the bot
- - /help: Give this message
+ ⭕ /start: Start the bot
+ ⭕ /help: Give this message
+ ⭕ /source: Source Code Of Bot
  """
     if mod_match:
         module = mod_match.group(1)
@@ -197,7 +199,7 @@ General command are:
         await query.message.edit(
             text=text,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("back", callback_data="help_back")]]
+                [[InlineKeyboardButton("Back 🔙 ", callback_data="help_back")]]
             ),
             disable_web_page_preview=True,
         )
